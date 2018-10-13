@@ -1,0 +1,7 @@
+{
+  "name": "sync_city",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
