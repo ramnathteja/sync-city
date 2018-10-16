@@ -1,0 +1,25 @@
+/* have to create item list of locations */
+/* list of smart stations */
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Locations</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h3>Select the Commute location</h3>
+<ion-list>
+  <button
+  ion-item
+  *ngFor="let  location of listOfLocations[0].locations"
+  [navPush]="transportation" [navParams] ="location">
+    <ion-icon name = "infinite" item-left></ion-icon>
+    <h2>{{ location.arrival | uppercase}}</h2>
+    <p>Inter_bus: {{location.inter_bus.stations.length}} Intra_bus: {{location.intra_bus.stations.length}} Metro: {{location.metro.stations.length}}</p>
+
+  </button>
+</ion-list>
+</ion-content>

@@ -1,0 +1,37 @@
+/* have to create types of transportation area-mode for the selected destination of locations */
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ selectedLocation.arrival | uppercase}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Select mode of transportation</h3>
+  <ion-list>
+    <button
+    ion-item
+    [navPush]="transport" [navParams] ="selectedLocation.inter_bus">
+      <ion-icon name = "bus" item-left></ion-icon>
+      <h2>Inter city buses</h2>
+      <p>Stations: {{selectedLocation.inter_bus.stations.length}}</p>
+    </button>
+    <button
+    ion-item
+    [navPush]="transport" [navParams] ="selectedLocation.intra_bus">
+      <ion-icon name = "bus" item-left></ion-icon>
+      <h2>Intra city buses</h2>
+      <p>Stations: {{selectedLocation.intra_bus.stations.length}}</p>
+    </button>
+    <button
+    ion-item
+    [navPush]="transport" [navParams] ="selectedLocation.metro">
+      <ion-icon name = "train" item-left></ion-icon>
+      <h2>Metro trains</h2>
+      <p>Stations: {{selectedLocation.metro.stations.length}}</p>
+    </button>
+  </ion-list>
+</ion-content>

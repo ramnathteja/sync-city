@@ -1,0 +1,27 @@
+/* selected area mode of transportations */
+/* shows the list of mode specific stations */
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{transport.icon}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let station of transport.stations">
+    <ion-card-header>
+      {{station.station}}
+    </ion-card-header>
+    <ion-card-content>
+    </ion-card-content>
+    <ion-row>
+      <ion-col text-right>
+        <button ion-button clear small (click)="checkDetailSchedule(station)">schedule</button>
+        <button ion-button clear small *ngIf="!isFavourite(station)" (click)="onAddToFavourite(station)">favourite</button>
+        <button ion-button color="danger" clear small *ngIf="isFavourite(station)" (click)="onRemoveToFavourite( station)">Unfavourite</button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>

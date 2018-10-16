@@ -1,0 +1,29 @@
+export interface localBus {
+  id:string,
+  type:string,
+  busLineType:{
+    type:string,
+    value:string,
+    metadata:{}
+  },
+  depTime:{
+    type:string,
+    value:string[]
+    metadata:{}
+  },
+  destination:{
+    type:string,
+    value:string,
+    metadata:{}
+  },
+  duration:{
+    type:string,
+    value:string,
+    metadata:{}
+  },
+  etc:{
+    type:string,
+    value:string,
+    metadata:{}
+  }
+}
