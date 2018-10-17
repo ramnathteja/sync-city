@@ -11,17 +11,17 @@ export default [
             {
               id: 'wangsimni',
               station: 'seoul',
-              url: '/metro/SN_intracitybus_seoul'
+              url: 'http://{{orion}}/v2/entities/subway_yataptowangsimni'
             },
             {
               id: 'wangsimni',
               station: 'Gacheonuniv',
-              url: '/metro/SN_intracitybus_Ansanstation'
+              url: 'http://{{orion}}/v2/entities/subway_yataptojukjeon'
             },
             {
               id: 'wangsimni',
               station: 'Amili',
-              url: '/metro/SN_intracitybus_Ansanstation'
+              url: 'http://{{orion}}/v2/entities/subway_yataptosuwon'
             }
           ]
         },
@@ -32,7 +32,7 @@ export default [
             {
               id: 'bus_3000',
               station: 'ima',
-              url: '/intra/SN_intracitybus_Ansanstation'
+              url: 'http://{{orion}}/v2/entities/SN_citybus_3000_south'
             }
           ]
         },
@@ -46,9 +46,9 @@ export default [
               url: '/interbus/SN_intercitybus_Ansanstation'
             },
             {
-              id: 'bus_dongdaegu',
+              id: 'Ansanstation',
               station: 'Gacheonuniv',
-              url: '/interbus/SN_intercitybus_Ansanstation'
+              url: 'http://{{orion}}/v2/entities/SN_intercitybus_Ansanstation'
             },
             {
               id: 'bus_dongdaegu',
@@ -68,17 +68,17 @@ export default [
             {
               id: '1BM',
               station: 'seoul',
-              url: '/metro/SN_intracitybus_seoul'
+              url: 'http://{{orion}}/v2/entities/subway_yataptowangsimni'
             },
             {
               id: '2BM',
               station: 'Gacheonuniv',
-              url: '/metro/SN_intracitybus_Ansanstation'
+              url: 'http://{{orion}}/v2/entities/subway_yataptojukjeon'
             },
             {
               id: '3BM',
               station: 'Amili',
-              url: '/metro/SN_intracitybus_Ansanstation'
+              url: 'http://{{orion}}/v2/entities/subway_yataptosuwon'
             }
           ]
         },
@@ -89,7 +89,7 @@ export default [
             {
               id: 'bus_3000',
               station: 'ima',
-              url: '/intra/SN_intracitybus_Ansanstation'
+              url: 'http://{{orion}}/v2/entities/SN_citybus_3000_north'
             }
           ]
         },
@@ -105,7 +105,7 @@ export default [
             {
               id: 'bus_dongdaegu',
               station: 'Gacheonuniv',
-              url: '/interbus/SN_intercitybus_Ansanstation'
+              url: 'http://{{orion}}/v2/entities/SN_intercitybus_Ansanstation'
             },
             {
               id: 'bus_dongdaegu',

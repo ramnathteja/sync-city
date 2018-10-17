@@ -5,23 +5,33 @@ import metro01 from '../data/metro01';
 import intra01 from '../data/intra01';
 import inter01 from '../data/inter01';
 import { localBus } from '../data/localBus.interface';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
 /* this will get the schedule using http and save that in array */
-
+@Injectable()
 export class ScheduleService {
   private favouriteBus: bus[] = [];
   private favouriteLocalBus: localBus[] = [];
   private favouriteMetro: metro[] = [];
+  private films: any;
+  constructor(private httpClient: HttpClient) {
+    this.films = this.httpClient.get('http://203.253.128.164:1026/v2/entities/subway_yataptowangsimni');
+    this.films.subscribe(data => {
+      console.log('my data: ', data);
+    });
+  }
 
+  // remove all the body in the getCommuteSchedule and write a http get methode
   getCommuteSchedule(commute: stations) {
-    if (commute.url.includes('metro')) {
+    if (commute.url.includes('subway')) {
       const commuteDetials = metro01;
       return commuteDetials;
-    } else if (commute.url.includes('intra')) {
-      const commuteDetials = intra01;
+    } else if (commute.url.includes('inter')) {
+      const commuteDetials = inter01;
       return commuteDetials;
     } else {
-      const commuteDetials = inter01;
+      const commuteDetials = intra01;
       return commuteDetials;
     }
   }
@@ -82,7 +92,7 @@ export class ScheduleService {
   }
 
   removeCommuteUsingStation(commute: stations) {
-    if (commute.url.includes('metro')) {
+    if (commute.url.includes('subway')) {
       const position = this.favouriteMetro.findIndex((commuteEL: metro) => {
         return commuteEL.id == commute.id;
       });
@@ -121,20 +131,21 @@ export class ScheduleService {
   }
 
   isCommuteFavourite(commute: stations) {
-    if (commute.url.includes('metro')) {
+    if (commute.url.includes('subway')) {
       return this.favouriteMetro.find((commuteEl: metro) => {
         return commuteEl.id == commute.id;
       });
-    } else if (commute.url.includes('intra')) {
-      return this.favouriteBus.find((commuteEl: bus) => {
+    } else if (commute.url.includes('inter')) {
+      return this.favouriteLocalBus.find((commuteEl: localBus) => {
         return commuteEl.id == commute.id;
       });
     } else {
-      return this.favouriteLocalBus.find((commuteEl: localBus) => {
+      return this.favouriteBus.find((commuteEl: bus) => {
         return commuteEl.id == commute.id;
       });
     }
   }
+
   getFavouriteCommute() {
     return {
       localbus: this.favouriteLocalBus.slice(),

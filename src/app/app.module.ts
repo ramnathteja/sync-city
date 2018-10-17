@@ -15,6 +15,7 @@ import { LocationsPage } from '../pages/locations/locations';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ScheduleService } from '../services/schedule';
 import { Geolocation } from '@ionic-native/geolocation';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { Geolocation } from '@ionic-native/geolocation';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -49,7 +51,6 @@ import { Geolocation } from '@ionic-native/geolocation';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ScheduleService,
-    Geolocation
-  ]
+    Geolocation  ]
 })
 export class AppModule {}
