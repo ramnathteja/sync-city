@@ -1,11 +1,7 @@
 import { stations } from '../data/stations.interface';
 import { bus } from '../data/bus.interface';
 import { metro } from '../data/metro.interface';
-import metro01 from '../data/metro01';
-import intra01 from '../data/intra01';
-import inter01 from '../data/inter01';
 import { localBus } from '../data/localBus.interface';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /* this will get the schedule using http and save that in array */
@@ -14,58 +10,38 @@ export class ScheduleService {
   private favouriteBus: bus[] = [];
   private favouriteLocalBus: localBus[] = [];
   private favouriteMetro: metro[] = [];
-  private films: any;
-  constructor(private httpClient: HttpClient) {
-    this.films = this.httpClient.get('http://203.253.128.164:1026/v2/entities/subway_yataptowangsimni');
-    this.films.subscribe(data => {
-      console.log('my data: ', data);
-    });
-  }
+  private tripletBus:any[]=[];
+  private tripletLocalBus:any[]=[];
+  private tripletMetro:any[]=[];
 
-  // remove all the body in the getCommuteSchedule and write a http get methode
-  getCommuteSchedule(commute: stations) {
-    if (commute.url.includes('subway')) {
-      const commuteDetials = metro01;
-      return commuteDetials;
-    } else if (commute.url.includes('inter')) {
-      const commuteDetials = inter01;
-      return commuteDetials;
+  constructor() {}
+
+  addCommuteToFavourite(commute: any) {
+    if (commute.type == 'metro') {
+      this.favouriteMetro.push(commute);
+    } else if (commute.type == 'intra_bus') {
+      this.favouriteBus.push(commute);
     } else {
-      const commuteDetials = intra01;
-      return commuteDetials;
+      this.favouriteLocalBus.push(commute);
     }
   }
 
-  addCommuteToFavourite(commute: bus | localBus | metro) {
-    //Todo Extract the url
-    //Todo get the commute schedule
-    //check type
-    //put it in appropriate array
 
+  addingTriplets(commute:any){
     if (commute.type == 'metro') {
-      const commuteDetials = metro01;
-      this.favouriteMetro.push(commuteDetials);
-      console.log(
-        this.favouriteMetro,
-        this.favouriteLocalBus,
-        this.favouriteBus
-      );
+
     } else if (commute.type == 'intra_bus') {
-      const commuteDetials = intra01;
-      this.favouriteBus.push(commuteDetials);
-      console.log(
-        this.favouriteMetro,
-        this.favouriteLocalBus,
-        this.favouriteBus
-      );
-    } else {
-      const commuteDetials = inter01;
-      this.favouriteLocalBus.push(commuteDetials);
-      console.log(
-        this.favouriteMetro,
-        this.favouriteLocalBus,
-        this.favouriteBus
-      );
+
+    } else if(commute.type == 'inter_bus'){
+      let notyetThree: boolean = true;
+      let sizeThreeArray: string []=[];
+      commute.depTime.value.array.forEach(element => {
+        if(notyetThree){
+          // if(Date.parse(element)> Data.parse()){
+
+          // }
+        }
+      });
     }
   }
 

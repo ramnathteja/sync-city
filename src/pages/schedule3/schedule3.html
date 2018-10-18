@@ -1,0 +1,41 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>{{selectedCommute?.id}}</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding text-center>
+    <ion-card>
+      <ion-card-header>
+          <h2>To: {{selectedCommute?.destination.value | uppercase}}</h2>
+      </ion-card-header>
+
+      <ion-card-content>
+          <h2> Line : {{selectedCommute?.busLineType.value | uppercase}}</h2>
+        <ion-list>
+          <ion-list-header>
+            Operating Time
+          </ion-list-header>
+          <ion-item item-center *ngFor="let item of selectedCommute.depTime.value">
+            {{item}}
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+      <ion-row>
+        <ion-col>
+          <button ion-button small outline color="danger" *ngIf="isFavourite(selectedCommute)" (click)="onRemoveToFavourite(selectedCommute)">
+            unfavourite
+          </button>
+          <button ion-button small outline color="primary" *ngIf="!isFavourite(selectedCommute)" (click)="onAddToFavourite(selectedCommute)">
+            favourites
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <button ion-button color="dark" (click)="onClose()">
+      Close
+    </button>
+  </ion-content>

@@ -3,12 +3,19 @@ import {
   IonicPage,
   NavParams,
   AlertController,
-  ModalController
+  ModalController,
+  LoadingController
 } from 'ionic-angular';
 import { transport } from '../../data/transport.interface';
 import { stations } from '../../data/stations.interface';
 import { SchedulePage } from '../schedule/schedule';
 import { ScheduleService } from '../../services/schedule';
+import { Schedule2Page } from '../schedule2/schedule2';
+import { Schedule3Page } from '../schedule3/schedule3';
+import { ParkingService } from '../../services/parking';
+import { bus } from '../../data/bus.interface';
+import { localBus } from '../../data/localBus.interface';
+import { metro } from '../../data/metro.interface';
 
 @IonicPage()
 @Component({
@@ -21,7 +28,9 @@ export class TransportPage implements OnInit {
     private modalCtrl: ModalController,
     private navParams: NavParams,
     private alertctrl: AlertController,
-    private scheduleService: ScheduleService
+    private scheduleService: ScheduleService,
+    private orion: ParkingService,
+    public loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {
@@ -29,9 +38,26 @@ export class TransportPage implements OnInit {
   }
 
   checkDetailSchedule(station: stations) {
-    const commute = this.scheduleService.getCommuteSchedule(station);
-    const modal = this.modalCtrl.create(SchedulePage, commute);
-    modal.present();
+    const loader =this.loadingCtrl.create({
+      content:'please wait...',
+      duration:2000
+    });
+    loader.present();
+    this.orion
+      .getParkingLotData(station.url)
+      .subscribe((commute: bus | localBus | metro) => {
+        if (commute.type == 'metro') {
+          const modal = this.modalCtrl.create(SchedulePage, commute);
+          modal.present();
+        } else if (commute.type == 'intra_bus') {
+          const modal = this.modalCtrl.create(Schedule2Page, commute);
+          modal.present();
+        } else {
+          const modal = this.modalCtrl.create(Schedule3Page, commute);
+          modal.present();
+        }
+      });
+
   }
 
   onAddToFavourite(station: stations) {
@@ -45,8 +71,11 @@ export class TransportPage implements OnInit {
           text: 'Yes',
           cssClass: 'color:danger',
           handler: () => {
-            const commute = this.scheduleService.getCommuteSchedule(station);
-            this.scheduleService.addCommuteToFavourite(commute);
+            this.orion
+              .getParkingLotData(station.url)
+              .subscribe((commute: bus | localBus | metro) => {
+                this.scheduleService.addCommuteToFavourite(commute);
+              });
           }
         },
         {

@@ -1,27 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
-import { metro } from '../../data/metro.interface';
+import { bus } from '../../data/bus.interface';
 import { ScheduleService } from '../../services/schedule';
+import { StaticInjector } from '@angular/core/src/di/injector';
+
+
 
 @IonicPage()
 @Component({
-  selector: 'page-schedule',
-  templateUrl: 'schedule.html'
+  selector: 'page-schedule2',
+  templateUrl: 'schedule2.html',
 })
-export class SchedulePage implements OnInit{
-
+export class Schedule2Page implements OnInit{
   name: string;
-  selectedCommute:  metro;
-  normalOperation: string[]
+  selectedCommute: bus ;
   constructor(
     private viewCtrl: ViewController,
     public navParams: NavParams,
     private scheduleService: ScheduleService
   ) {}
 
+
   ngOnInit(){
     this.selectedCommute = this.navParams.data;
-    this.normalOperation = this.selectedCommute.operationNorm.value
   }
   ionViewDidLoad() {
 
@@ -33,14 +34,18 @@ export class SchedulePage implements OnInit{
     this.viewCtrl.dismiss();
   }
 
-  isFavourite(commute: metro ) {
+  isFavourite(commute: bus ) {
     return this.scheduleService.isCommuteFavouriteForSchedulePage(commute);
   }
 
-  onAddToFavourite(commute: metro ) {
+  onAddToFavourite(commute: bus) {
     this.scheduleService.addCommuteToFavourite(commute);
   }
-  onRemoveToFavourite(commute: metro ) {
+  onRemoveToFavourite(commute: bus ) {
     this.scheduleService.removeCommuteFromFavourite(commute);
   }
 }
+
+
+
+

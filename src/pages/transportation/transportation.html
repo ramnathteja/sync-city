@@ -15,21 +15,21 @@
     <button
     ion-item
     [navPush]="transport" [navParams] ="selectedLocation.inter_bus">
-      <ion-icon name = "bus" item-left></ion-icon>
+      <ion-icon color= "indigo" name = "bus" item-left></ion-icon>
       <h2>Inter city buses</h2>
       <p>Stations: {{selectedLocation.inter_bus.stations.length}}</p>
     </button>
     <button
     ion-item
     [navPush]="transport" [navParams] ="selectedLocation.intra_bus">
-      <ion-icon name = "bus" item-left></ion-icon>
+      <ion-icon color= "indigo" name = "bus" item-left></ion-icon>
       <h2>Intra city buses</h2>
       <p>Stations: {{selectedLocation.intra_bus.stations.length}}</p>
     </button>
     <button
     ion-item
     [navPush]="transport" [navParams] ="selectedLocation.metro">
-      <ion-icon name = "train" item-left></ion-icon>
+      <ion-icon color= "indigo" name = "train" item-left></ion-icon>
       <h2>Metro trains</h2>
       <p>Stations: {{selectedLocation.metro.stations.length}}</p>
     </button>

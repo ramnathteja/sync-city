@@ -15,7 +15,11 @@ import { LocationsPage } from '../pages/locations/locations';
 import { SchedulePage } from '../pages/schedule/schedule';
 import { ScheduleService } from '../services/schedule';
 import { Geolocation } from '@ionic-native/geolocation';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP } from '@ionic-native/http';
+import { ParkingService } from '../services/parking';
+import { Schedule2Page } from '../pages/schedule2/schedule2';
+import { Schedule3Page } from '../pages/schedule3/schedule3';
 
 @NgModule({
   declarations: [
@@ -27,13 +31,11 @@ import { HttpClientModule } from '@angular/common/http'
     TransportPage,
     HomePage,
     LocationsPage,
-    SchedulePage
+    SchedulePage,
+    Schedule2Page,
+    Schedule3Page
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    IonicModule.forRoot(MyApp)
-  ],
+  imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(MyApp)],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -44,13 +46,18 @@ import { HttpClientModule } from '@angular/common/http'
     TransportationPage,
     TransportPage,
     LocationsPage,
-    SchedulePage
+    SchedulePage,
+    Schedule2Page,
+    Schedule3Page
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     ScheduleService,
-    Geolocation  ]
+    Geolocation,
+    HTTP,
+    ParkingService
+  ]
 })
 export class AppModule {}

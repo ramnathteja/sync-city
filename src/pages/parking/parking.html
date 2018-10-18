@@ -11,9 +11,29 @@
   <ion-card class="cards-bg">
     <div #map id="map"></div>
     <ion-list>
+      <ion-item *ngIf="!isMarkerClicked()">
+        <ion-item>
+          <ion-row>
+            <ion-col>
+              <h2>{{parkingData?.name.value | uppercase}}</h2>
+              <ion-item>
+                <ion-icon color="primary" name="car" large item-start></ion-icon>
+                Total Spots
+                <ion-badge item-end>{{parkingData?.totalSpotNumber.value}}</ion-badge>
+              </ion-item>
+              <ion-item>
+                <ion-icon color="secondary" name="car" large item-start></ion-icon>
+                Available Spots
+                <ion-badge item-end>{{parkingData?.availableSpotNumber.value}}</ion-badge>
+              </ion-item>
+              <p>{{parkingData?.type}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-item>
       <ion-item-sliding *ngFor="let localBus of localBuses">
-        <ion-item  (click)="onClickSchedule( localBus )">
-          <ion-icon name="bus" item-left></ion-icon>
+        <ion-item (click)="onClickSchedule( localBus )">
+          <ion-icon color= "danger" name="bus" item-left></ion-icon>
           <h2>{{localBus.id}}</h2>
           <p>{{localBus.busLineType.value}}</p>
         </ion-item>
@@ -26,7 +46,7 @@
       </ion-item-sliding>
       <ion-item-sliding *ngFor="let bus of cityBuses">
         <ion-item (click)="onClickSchedule( bus )">
-            <ion-icon name="bus" item-left></ion-icon>
+          <ion-icon color= "danger" name="bus" item-left></ion-icon>
           <h2>{{bus.id}}</h2>
           <p>{{bus.busLineType.value}}</p>
         </ion-item>
@@ -39,7 +59,7 @@
       </ion-item-sliding>
       <ion-item-sliding *ngFor="let metro of metros">
         <ion-item (click)="onClickSchedule( metro )">
-            <ion-icon name="train" item-left></ion-icon>
+          <ion-icon color= "danger" name="train" item-left></ion-icon>
           <h2>{{metro.id}}</h2>
           <p>{{metro.direction.value}}</p>
         </ion-item>
@@ -52,5 +72,4 @@
       </ion-item-sliding>
     </ion-list>
   </ion-card>
-
 </ion-content>

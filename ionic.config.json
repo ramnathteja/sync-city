@@ -3,5 +3,9 @@
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular"
+  "type": "ionic-angular",
+  "proxies": [{
+    "path": "/goto",
+    "proxyUrl": "http://203.253.128.164:1026/v2/entities"
+}]
 }

@@ -10,17 +10,26 @@
 <ion-content padding text-center>
   <ion-card>
     <ion-card-header>
-      <h1>{{selectedCommute?.station.value | uppercase }} ----> {{selectedCommute?.direction.value | uppercase}}</h1>
+        <h2> From: {{selectedCommute?.origin.value | uppercase }}</h2>
+       -->
+        <h2>To: {{selectedCommute?.destination.value | uppercase}}</h2>
     </ion-card-header>
+
     <ion-card-content>
-      <h2> Line : {{selectedCommute?.line.value | uppercase}}</h2>
+        <h2> Line : {{selectedCommute?.busLineType.value | uppercase}}</h2>
       <ion-list>
         <ion-list-header>
-          Operating times
+          Operating Time
         </ion-list-header>
-        <ion-item item-right *ngFor="let item of normalOperation">
+        <ion-item item-right *ngFor="let item of selectedCommute.operationNorm.value">
           {{item}}
         </ion-item>
+        <ion-list-header>
+            Operating Time in Holidays
+          </ion-list-header>
+          <ion-item item-right *ngFor="let item of selectedCommute.operationHoli.value">
+            {{item}}
+          </ion-item>
       </ion-list>
     </ion-card-content>
     <ion-row>
@@ -34,7 +43,6 @@
       </ion-col>
     </ion-row>
   </ion-card>
-
   <button ion-button color="dark" (click)="onClose()">
     Close
   </button>
