@@ -13,9 +13,6 @@ import { ScheduleService } from '../../services/schedule';
 import { Schedule2Page } from '../schedule2/schedule2';
 import { Schedule3Page } from '../schedule3/schedule3';
 import { ParkingService } from '../../services/parking';
-import { bus } from '../../models/bus.interface';
-import { localBus } from '../../models/localBus.interface';
-import { metro } from '../../models/metro.interface';
 
 @IonicPage()
 @Component({
@@ -38,14 +35,15 @@ export class TransportPage implements OnInit {
   }
 
   checkDetailSchedule(station: stations) {
-    const loader =this.loadingCtrl.create({
-      content:'please wait...',
-      duration:2000
+    const loader = this.loadingCtrl.create({
+      content: 'please wait...',
+      duration: 2000
     });
     loader.present();
     this.orion
       .getParkingLotData(station.url)
-      .subscribe((commute: bus | localBus | metro) => {
+      .then((value) => {
+        let commute = JSON.parse(value.data);
         if (commute.type == 'metro') {
           const modal = this.modalCtrl.create(SchedulePage, commute);
           modal.present();
@@ -56,8 +54,10 @@ export class TransportPage implements OnInit {
           const modal = this.modalCtrl.create(Schedule3Page, commute);
           modal.present();
         }
+      })
+      .catch(error => {
+        //write code for error alert cntrl
       });
-
   }
 
   onAddToFavourite(station: stations) {
@@ -73,8 +73,13 @@ export class TransportPage implements OnInit {
           handler: () => {
             this.orion
               .getParkingLotData(station.url)
-              .subscribe((commute: bus | localBus | metro) => {
-                this.scheduleService.addCommuteToFavourite(commute);
+              .then(value => {
+                this.scheduleService.addCommuteToFavourite(
+                  JSON.parse(value.data)
+                );
+              })
+              .catch(error => {
+                //write code for error alert cntrl
               });
           }
         },

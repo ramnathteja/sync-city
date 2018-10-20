@@ -7,7 +7,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { ParkingPage } from '../pages/parking/parking';
 import { CommutePage } from '../pages/commute/commute';
-import { SpotPage } from '../pages/spot/spot';
 import { TransportationPage } from '../pages/transportation/transportation';
 import { TransportPage } from '../pages/transport/transport';
 import { HomePage } from '../pages/home/home';
@@ -26,7 +25,6 @@ import { Schedule3Page } from '../pages/schedule3/schedule3';
     MyApp,
     ParkingPage,
     CommutePage,
-    SpotPage,
     TransportationPage,
     TransportPage,
     HomePage,
@@ -42,7 +40,6 @@ import { Schedule3Page } from '../pages/schedule3/schedule3';
     HomePage,
     ParkingPage,
     CommutePage,
-    SpotPage,
     TransportationPage,
     TransportPage,
     LocationsPage,

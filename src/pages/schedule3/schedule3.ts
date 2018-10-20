@@ -35,7 +35,9 @@ export class Schedule3Page implements OnInit{
   }
 
   onClose() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss().catch(error=>{
+      console.error(error);
+    });
   }
 
   isFavourite(commute: localBus) {

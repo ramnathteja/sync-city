@@ -30,7 +30,9 @@ export class SchedulePage implements OnInit{
   }
 
   onClose() {
-    this.viewCtrl.dismiss();
+    this.viewCtrl.dismiss().catch(error =>{
+      console.error(error);
+    });
   }
 
   isFavourite(commute: metro ) {

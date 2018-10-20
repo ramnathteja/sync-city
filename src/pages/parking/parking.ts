@@ -63,6 +63,11 @@ export class ParkingPage implements OnInit {
         pos.coords.latitude,
         pos.coords.longitude
       );
+      var marker = new google.maps.Marker({
+        position: latlang,
+        // animation: google.maps.Animation.BOUNCE,
+        map: this.map
+      });
       this.map.setCenter(latlang);
       this.map.setZoom(15);
     });
@@ -70,12 +75,20 @@ export class ParkingPage implements OnInit {
 
   ionViewDidLoad() {
     this.parkingSpots.forEach(element => {
-      console.log(element.url);
       this.parkingService
         .getParkingLotData(element.url)
-        .subscribe((data: parkingDataModel) => {
-          console.log(data);
-          this.addMarker(data);
+        .then(value => {
+          console.log('came in to the promise');
+          console.log('this is the data 2 i requested ' + value);
+          console.log(
+            'this is the data 2 of the value ' + JSON.parse(value.data)
+          );
+          console.log('this is the status 2 of the value ' + value.status);
+
+          this.addMarker(JSON.parse(value.data));
+        })
+        .catch(error => {
+          console.log(error);
         });
     });
   }
@@ -84,8 +97,15 @@ export class ParkingPage implements OnInit {
     this.clicked = false;
     this.parkingService
       .getParkingLotData(this.currentSelectedLot)
-      .subscribe((data: parkingDataModel) => {
-        this.parkingData = data;
+      .then(value => {
+        console.log('came in to the promise');
+        console.log('this is the data i requested ' + value);
+        console.log('this is the data  of the value ' + JSON.parse(value.data));
+        console.log('this is the status of the value ' + value.status);
+        this.parkingData = JSON.parse(value.data);
+      })
+      .catch(error => {
+        console.log(error);
       });
     console.log('refresh came!!');
   }
