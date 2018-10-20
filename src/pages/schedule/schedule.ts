@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
-import { metro } from '../../data/metro.interface';
+import { metro } from '../../models/metro.interface';
 import { ScheduleService } from '../../services/schedule';
 
 @IonicPage()

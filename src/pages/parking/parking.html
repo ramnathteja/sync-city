@@ -16,6 +16,7 @@
           <ion-row>
             <ion-col>
               <h2>{{parkingData?.name.value | uppercase}}</h2>
+              <p>{{parkingData?.type}}</p>
               <ion-item>
                 <ion-icon color="primary" name="car" large item-start></ion-icon>
                 Total Spots
@@ -26,7 +27,7 @@
                 Available Spots
                 <ion-badge item-end>{{parkingData?.availableSpotNumber.value}}</ion-badge>
               </ion-item>
-              <p>{{parkingData?.type}}</p>
+
             </ion-col>
           </ion-row>
         </ion-item>

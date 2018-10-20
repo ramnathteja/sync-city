@@ -6,16 +6,16 @@ import {
   ModalController,
   LoadingController
 } from 'ionic-angular';
-import { transport } from '../../data/transport.interface';
-import { stations } from '../../data/stations.interface';
+import { transport } from '../../models/transport.interface';
+import { stations } from '../../models/stations.interface';
 import { SchedulePage } from '../schedule/schedule';
 import { ScheduleService } from '../../services/schedule';
 import { Schedule2Page } from '../schedule2/schedule2';
 import { Schedule3Page } from '../schedule3/schedule3';
 import { ParkingService } from '../../services/parking';
-import { bus } from '../../data/bus.interface';
-import { localBus } from '../../data/localBus.interface';
-import { metro } from '../../data/metro.interface';
+import { bus } from '../../models/bus.interface';
+import { localBus } from '../../models/localBus.interface';
+import { metro } from '../../models/metro.interface';
 
 @IonicPage()
 @Component({

@@ -1,13 +1,13 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { IonicPage, NavParams, ModalController } from 'ionic-angular';
-import { localBus } from '../../data/localBus.interface';
-import { bus } from '../../data/bus.interface';
-import { metro } from '../../data/metro.interface';
+import { localBus } from '../../models/localBus.interface';
+import { bus } from '../../models/bus.interface';
+import { metro } from '../../models/metro.interface';
 import { ScheduleService } from '../../services/schedule';
 import { SchedulePage } from '../schedule/schedule';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ParkingService } from '../../services/parking';
-import { parkingDataModel } from '../../data/parkingData.interface';
+import { parkingDataModel } from '../../models/parkingData.interface';
 import { Schedule2Page } from '../schedule2/schedule2';
 import { Schedule3Page } from '../schedule3/schedule3';
 
@@ -55,7 +55,7 @@ export class ParkingPage implements OnInit {
       zoomControl: false,
       streetViewControl: false
     };
-    console.log('this is the data parse',Date.parse('06:40:00'));
+
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
 
     this.geolocation.getCurrentPosition().then(pos => {

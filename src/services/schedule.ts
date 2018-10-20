@@ -1,7 +1,7 @@
-import { stations } from '../data/stations.interface';
-import { bus } from '../data/bus.interface';
-import { metro } from '../data/metro.interface';
-import { localBus } from '../data/localBus.interface';
+import { stations } from '../models/stations.interface';
+import { bus } from '../models/bus.interface';
+import { metro } from '../models/metro.interface';
+import { localBus } from '../models/localBus.interface';
 import { Injectable } from '@angular/core';
 
 /* this will get the schedule using http and save that in array */
@@ -10,9 +10,9 @@ export class ScheduleService {
   private favouriteBus: bus[] = [];
   private favouriteLocalBus: localBus[] = [];
   private favouriteMetro: metro[] = [];
-  private tripletBus:any[]=[];
-  private tripletLocalBus:any[]=[];
-  private tripletMetro:any[]=[];
+  // private tripletBus:any[]=[];
+  // private tripletLocalBus:any[]=[];
+  // private tripletMetro:any[]=[];
 
   constructor() {}
 
@@ -27,23 +27,29 @@ export class ScheduleService {
   }
 
 
-  addingTriplets(commute:any){
-    if (commute.type == 'metro') {
+  // addingTriplets(commute:any){
+  //   if (commute.type == 'metro') {
 
-    } else if (commute.type == 'intra_bus') {
+  //   } else if (commute.type == 'intra_bus') {
 
-    } else if(commute.type == 'inter_bus'){
-      let notyetThree: boolean = true;
-      let sizeThreeArray: string []=[];
-      commute.depTime.value.array.forEach(element => {
-        if(notyetThree){
-          // if(Date.parse(element)> Data.parse()){
-
-          // }
-        }
-      });
-    }
-  }
+  //   } else if(commute.type == 'inter_bus'){
+  //     let notyetThree: boolean = true;
+  //     let sizeThreeArray: string []=[];
+  //     commute.depTime.value.array.forEach(element => {
+  //       if(notyetThree){
+  //         if(Date.parse(element)> Data.parse()){
+  //           if(index is 1 |2 |3 ){
+  //             add first three to array
+  //           }else{
+  //             add x-1, x-2, x-3 to array
+  //           }
+  //         }else{
+  //             do nothing
+  //         }
+  //       }
+  //     });
+  //   }
+  // }
 
   removeCommuteFromFavourite(commute: metro | localBus | bus) {
     const type = commute.type;

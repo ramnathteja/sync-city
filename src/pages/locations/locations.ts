@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
-import { lists } from '../../data/lists.interface';
+import { lists } from '../../models/lists.interface';
 import locationList from '../../data/locationLists';
 import { TransportationPage } from '../transportation/transportation';
 

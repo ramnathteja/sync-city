@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
-import { bus } from '../../data/bus.interface';
+import { bus } from '../../models/bus.interface';
 import { ScheduleService } from '../../services/schedule';
-import { StaticInjector } from '@angular/core/src/di/injector';
 
 
 

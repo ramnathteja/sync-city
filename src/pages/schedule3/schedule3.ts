@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
-import { localBus } from '../../data/localBus.interface';
+import { localBus } from '../../models/localBus.interface';
 import { ScheduleService } from '../../services/schedule';
 
 /**

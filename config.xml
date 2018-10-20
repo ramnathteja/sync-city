@@ -88,6 +88,7 @@
     <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
         <string>This App wants to mark smart parking location</string>
     </edit-config>
+    <plugin name="cordova-plugin-android-permissions" spec="1.0.0" />
     <plugin name="cordova-plugin-advanced-http" spec="2.0.1" />
-    <engine name="android" spec="7.1.1" />
+    <engine name="android" spec="~7.1.1" />
 </widget>
