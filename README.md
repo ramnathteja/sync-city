@@ -59,13 +59,13 @@ This would open the project in a browser window;
 User can change the device frame of the project by right clicking on the project page and then
 selecting inspect.
 
-After that selected the required device frame 
+After that select the required device frame 
 
 ![Device Frame](https://github.com/ramnathteja/sync-city/blob/master/images/ionic_serve_local_iphoneXDF.PNG)
 
 ### Running on the Android
 
-To run on the android device, Android Platform of the project has to be build using the following command
+To run on an android device, Android Platform of the project has to be built using the following command
 
 ```
 $ ionic cordova platform add android
