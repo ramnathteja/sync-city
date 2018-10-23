@@ -4,7 +4,7 @@ SYNC-CIY
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live device.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See 'Running on the Android' for notes on how to deploy the project on a live device.
 
 ### Prerequisites
 
@@ -54,14 +54,14 @@ $ ionic serve - local
 
 This would open the project in a browser window;
 
-![Opening Page]()
+![Opening Page](https://github.com/ramnathteja/sync-city/blob/master/images/ioni_serve_local_openingPage.PNG)
 
 User can change the device frame of the project by right clicking on the project page and then
 selecting inspect.
 
 After that selected the required device frame 
 
-![Device Frame]()
+![Device Frame](https://github.com/ramnathteja/sync-city/blob/master/images/ionic_serve_local_iphoneXDF.PNG)
 
 ### Running on the Android
 
@@ -85,7 +85,7 @@ Tester can run the project after Gradle build is finished either using an emulat
 
 The emulator or the device should be of version 27 or higher API
 
-![alter text](http:)
+![alter text](https://github.com/ramnathteja/sync-city/blob/master/images/emulatorVerion.PNG)
 
 Tester can find the logs in the logcat
 
